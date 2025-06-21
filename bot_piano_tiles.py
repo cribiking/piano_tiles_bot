@@ -4,9 +4,10 @@ import keyboard
 
 def main():
     print("Sleep..")
-    time.sleep(3)  # Espera 3 segundos antes de empezar (puedes mover el cursor a la zona que quieras)
+    time.sleep(3)  #Wait 3seconds
     x , y , start_coordenates = 0,0,0
     
+    #Click start tile
     try:
         start_coordenates = pyautogui.locateCenterOnScreen("my_tiles/start.png", confidence=0.8)
         x = start_coordenates[0]
@@ -38,7 +39,8 @@ def click(x, y):
     pyautogui.moveTo(x, y)
     pyautogui.click()
     print(x , y)
-    
+
+# Blue tiles has diferent colors
 def is_dark(pixel, threshold=60):
     r, g, b = pixel
     return r < threshold and g < threshold and b < threshold
