@@ -17,34 +17,32 @@ def main():
         print("Imatge Not Found")
         
         
-    size_screen = pyautogui.size()
-    offset =size_screen[1] - 200 #To prevent error from limit screen
+    #size_screen = pyautogui.size()
+    #offset =size_screen[1] - 200 #To prevent error from limit screen
+    
+    offset = 530
     
     while keyboard.is_pressed('q') == False:
         
-        if is_dark(pyautogui.pixel(713, offset)):
+        
+        if pyautogui.pixel(713, offset)[0] < 60:
             click(713, offset)
 
-        if is_dark(pyautogui.pixel(871, offset)):
+        if pyautogui.pixel(871, offset)[0] < 60:
             click(871, offset)
 
-        if is_dark(pyautogui.pixel(1032, offset)):
+        if pyautogui.pixel(1032, offset)[0] < 60:
             click(1032, offset)
 
-        if is_dark(pyautogui.pixel(1199, offset)):
+        if pyautogui.pixel(1199, offset)[0] < 60:
             click(1199, offset)
             
     
 def click(x, y):
+    x+=7
     pyautogui.moveTo(x, y)
     pyautogui.click()
     print(x , y)
-
-# Blue tiles has diferent colors
-def is_dark(pixel, threshold=60):
-    r, g, b = pixel
-    return r < threshold and g < threshold and b < threshold
-
     
 if __name__=="__main__":
     main()
